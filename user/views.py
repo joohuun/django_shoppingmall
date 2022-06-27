@@ -17,7 +17,7 @@ class UserView(APIView):
     # 유저인증
     def get(self, request):
         # 로그인된 유저 조회(request.user)
-        print(dir(request.user))
+        # print(dir(request.user))
         user = UserSerializer(request.user, context={"request": request}).data
         return Response(user, status=status.HTTP_200_OK)
         
