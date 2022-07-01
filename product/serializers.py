@@ -73,5 +73,5 @@ class ProductSerializer(serializers.ModelSerializer):
         
 class test:
     
-    ## askdlwdokas;dlkwodi####
+    ## askdlwdokas;dlkwodi#### 어쩌구 저쩌구
     pass
