@@ -12,8 +12,8 @@ class HobbySerializer(serializers.ModelSerializer):
         print(user)
         
         # user_list = []
-        # for profile in obj.profile_set.exclude(user=user):
-        #     user_list.append(profile.user.username)
+        # for profile in obj.profile_set.exclude(user=user): # obj=hobby, 취미모델에는 프로필객체가 없으므로 _set으로 가져옴
+            # user_list.append(profile.user.username)
         # return user_list
         return [profile.user.username for profile in obj.profile_set.exclude(user=user)]
         

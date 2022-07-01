@@ -38,9 +38,11 @@ class ArticleSerializer(serializers.ModelSerializer):
     매니투매니관계는 반복문을 사용하여 article의 category.name를 가져옴
     """
     
-    user = serializers.SerializerMethodField()    
-    def get_user(self, obj):
-        return obj.user.username
+    user = serializers.SlugRelatedField(read_only=True, slug_field='username')
+    # user = serializers.SerializerMethodField()    
+    # def get_user(self, obj):
+    #     # print(obj.user.username)
+    #     return obj.user.username
     """
     아티클모델은 유저를 FK로 상속하고 있음, 위의 obj는 article임
     원투매니관계는 반복문 사용안하고 이름으로 가져올 수 있음

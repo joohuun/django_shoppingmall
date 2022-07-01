@@ -1,14 +1,11 @@
-from functools import partial
-from unicodedata import category
 from django.shortcuts import get_object_or_404, render
 from rest_framework.views import APIView
 from rest_framework import permissions, status, viewsets
 from rest_framework.response import Response
-from blog import serializers
 from blog.models import Article as ArticleModel
 from blog.models import Comment as CommentModel
 from blog.models import Category as CategoryModel
-from blog.serializers import ArticleSerializer
+from blog.serializers import ArticleSerializer, CommentSerializer
 
 # Create your views here.
 class ArticleView(APIView):
@@ -44,11 +41,18 @@ class ArticleView(APIView):
     def delete(self, request, art_id):
         article = get_object_or_404(ArticleModel, id=art_id)
         article.delete()
-        return Response({f"제목:{article.title} 삭제되었습니다"})
+        return Response({f"제목: {article.title} 삭제 되었습니다"})
+    
     
 
-
+class CommentsViewSet(viewsets.ModelViewSet):
+    queryset = CommentModel.objects.all()
+    serializer_class = CommentSerializer
+    
+    def perform_create(self, serializer):
+        serializer.save(user = self.request.user)
             
+
 
     
 # class ArticleViewSet(viewsets.ModelViewSet):
