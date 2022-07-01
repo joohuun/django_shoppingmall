@@ -71,4 +71,5 @@ class ProductSerializer(serializers.ModelSerializer):
         
             
         
-    ## tiffitkftifkfcnrkc,
+class test:
+    pass
