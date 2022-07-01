@@ -47,7 +47,7 @@ class User(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     
     class Meta:
-        db_table = "user"
+        db_table = "유저"
         
     def __str__(self):
         return f"{self.email} / {self.username}"
